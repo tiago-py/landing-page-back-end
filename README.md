@@ -61,6 +61,8 @@ Uma API simples para gerenciar ganhadores de prêmios, construída com Node.js e
        ```json
        {
            "name": "Nome do Ganhador",
+           "cpf": "CPF do ganhador",
+           "lucky_number": "numero da sorte",
            "prize": "Prêmio do Ganhador",
            "date": "YYYY-MM-DD" // Data do prêmio
        }
