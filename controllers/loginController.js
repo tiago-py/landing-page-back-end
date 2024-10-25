@@ -1,3 +1,4 @@
+
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
@@ -22,7 +23,13 @@ const login = async (req, res) => {
         // Criar um token de autenticação
         const token = jwt.sign({ name: user.name }, 'secretkey');
 
-        return res.json({ token });
+       return res.status(201).json({ 
+            user: {
+                name: user.name,
+                email: user.email,
+                cpf: user.cpf 
+            } 
+        });
         
     } catch (error) {
         res.status(500).json({ message: error.message });
