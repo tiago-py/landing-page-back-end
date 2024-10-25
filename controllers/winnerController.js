@@ -1,5 +1,6 @@
 // Importando o model Winner
 const Winner = require('../models/winner');
+const Draw = require('../models/draw.js')
 
 // Cadastrar ganhador
 const createWinner = async (req, res) => {
@@ -54,8 +55,10 @@ const deleteWinner = async (req, res) => {
     }
 };
 
+
 module.exports = {
     createWinner,
     getWinners,
-    deleteWinner
+    deleteWinner,
+    createDraw
 };
