@@ -1,8 +1,11 @@
+const Draw = require("../models/draw");
+
+
 const createDraw = async (req, res) => {
     const { prize, date } = req.body;
     try {
         // Verificar se já existe um ganhador com o mesmo nome
-        const existingDraw = await Winner.findOne({ date });
+        const existingDraw = await Draw.findOne({ date });
         if (existingDraw) {
             return res.status(400).json({ message: 'Data já cadastrada' });
         }
