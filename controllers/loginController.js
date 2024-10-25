@@ -50,7 +50,14 @@ const register = async (req, res) => {
         // Salvar o novo usuário no banco de dados
         await newUser.save();
 
-        res.status(201).json({ message: 'User created successfully' });
+        res.status(201).json({ 
+            token, 
+            user: {
+                name: user.name,
+                email: user.email,
+                cpf: user.cpf 
+            } 
+        });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
