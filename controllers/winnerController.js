@@ -60,5 +60,4 @@ module.exports = {
     createWinner,
     getWinners,
     deleteWinner,
-    createDraw
 };
