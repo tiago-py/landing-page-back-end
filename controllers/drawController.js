@@ -5,9 +5,9 @@ const createDraw = async (req, res) => {
     const { prize, date } = req.body;
     try {
         // Verificar se já existe um ganhador com o mesmo nome
-        const existingDraw = await Draw.findOne({ date });
+        const existingDraw = await Draw.findOne({ prize });
         if (existingDraw) {
-            return res.status(400).json({ message: 'Data já cadastrada' });
+            return res.status(400).json({ message: 'Premio já cadastrado' });
         }
         // Criar um novo ganhador com os dados recebidos
         const newDraw = new Draw({ prize, date });
