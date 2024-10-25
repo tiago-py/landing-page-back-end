@@ -4,7 +4,7 @@ const {
     getWinners,
     deleteWinner,
 } = require('../controllers/winnerController');
-const { createDraw } = require('../controllers/drawController');
+const { createDraw, getDraws } = require('../controllers/drawController');
 
 const router = express.Router();
 
@@ -19,5 +19,8 @@ router.delete('/:id', deleteWinner);
 
 // Rota para criar um novo sorteio
 router.post('/create-draw', createDraw);
+
+// Rota para obter todos os sorteios
+router.get('/draws', getDraws);
 
 module.exports = router;

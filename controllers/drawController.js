@@ -18,6 +18,19 @@ const createDraw = async (req, res) => {
     }
 };
 
+const getDraws = async (req, res) => {
+    try {
+        // Buscar todos os ganhadores no banco de dados
+        const draws = await Draw.find();
+        // Retornar a lista de ganhadores com status 200
+        res.status(200).json(draws);
+    } catch (error) {
+        // Retornar um erro caso algo dê errado
+        res.status(500).json({ message: error.message });
+    }
+};
+
 module.exports = {
-    createDraw
+    createDraw,
+    getDraws
 };
