@@ -12,7 +12,7 @@ const app = express();
 app.use(bodyParser.json()); // Usar o body-parser para interpretar JSON
 app.use(cors())
 app.use('/api/winners', winnerRouter); // Configurar as rotas da API
-app.use('/api/login', loginRouter); // Configurar as rotas da API
+app.use('/api', loginRouter); // Configurar as rotas da API
 
 // Conectar ao MongoDB
 connectDB(); // Chamar a função de conexão
