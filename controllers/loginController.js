@@ -23,7 +23,7 @@ const login = async (req, res) => {
         // Criar um token de autenticação
         const token = jwt.sign({ name: user.name }, 'secretkey');
 
-       return res.status(201).json({ 
+        res.status(201).json({ 
            token,
             user: {
                 name: user.name,
@@ -33,6 +33,7 @@ const login = async (req, res) => {
         });
         
     } catch (error) {
+        console.log(error.message)
         res.status(500).json({ message: error.message });
     }
 };
@@ -60,9 +61,9 @@ const register = async (req, res) => {
 
         res.status(201).json({ 
             user: {
-                name: user.name,
-                email: user.email,
-                cpf: user.cpf 
+                name: newUser.name,
+                email: newUser.email,
+                cpf: newUser.cpf 
             } 
         });
     } catch (error) {
