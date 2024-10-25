@@ -1,5 +1,5 @@
 // Importando o model Winner
-const Winner = require('../models/Winner');
+const Winner = require('../models/winner');
 
 // Cadastrar ganhador
 const createWinner = async (req, res) => {
