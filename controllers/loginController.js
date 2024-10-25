@@ -51,7 +51,6 @@ const register = async (req, res) => {
         await newUser.save();
 
         res.status(201).json({ 
-            token, 
             user: {
                 name: user.name,
                 email: user.email,
