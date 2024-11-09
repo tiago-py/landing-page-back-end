@@ -31,8 +31,8 @@ const login = async (req, res) => {
 
 const register = async (req, res) => {
     try {
-        const { email, name, cpf, password } = req.body;
-        const data = { email, name, cpf };
+        const { email, name, role, password } = req.body;
+        const data = { email, name, role };
 
         // Verificar se o nome de usuário existe
         const user = await User.findOne({ name });
