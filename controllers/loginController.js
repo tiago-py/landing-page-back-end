@@ -1,3 +1,4 @@
+
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
@@ -22,9 +23,17 @@ const login = async (req, res) => {
         // Criar um token de autenticação
         const token = jwt.sign({ name: user.name }, 'secretkey');
 
-        return res.json({ token });
+        res.status(201).json({ 
+           token,
+            user: {
+                name: user.name,
+                email: user.email,
+                cpf: user.cpf 
+            } 
+        });
         
     } catch (error) {
+        console.log(error.message)
         res.status(500).json({ message: error.message });
     }
 };
@@ -35,7 +44,7 @@ const register = async (req, res) => {
         const data = { email, name, role };
 
         // Verificar se o nome de usuário existe
-        const user = await User.findOne({ name });
+        const user = await User.findOne({ email });
 
         if (user) {
             return res.status(409).json({ message: 'User already exists' });
@@ -50,7 +59,13 @@ const register = async (req, res) => {
         // Salvar o novo usuário no banco de dados
         await newUser.save();
 
-        res.status(201).json({ message: 'User created successfully' });
+        res.status(201).json({ 
+            user: {
+                name: newUser.name,
+                email: newUser.email,
+                cpf: newUser.cpf 
+            } 
+        });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
